@@ -1,77 +1,78 @@
-# Data dictionary
+# Datovy slovnik
 
-The project works with match-level tables. Source files are downloaded
-separately and kept locally under `data/raw`; large source datasets are not
-committed to Git.
+Projekt pracuje s tabulkami na urovni zapasov. Zdrojove subory sa stahuju
+samostatne a ukladaju lokalne do `data/raw`; velke zdrojove datasety sa
+necommit-uju do Git repozitara.
 
-## Canonical match schema
+## Canonicalna schema zapasu
 
-The loaders in `src/football_analysis/sources.py` return these columns:
+Loadery v `src/football_analysis/sources.py` vracaju tieto stlpce:
 
-| Column | Type | Meaning |
+| Stlpec | Typ | Vyklad |
 | --- | --- | --- |
-| `date` | datetime | Match date as supplied by the source |
-| `league` | string | Competition identifier, for example `EPL` |
-| `season` | string | Season identifier, for example `2022-23` |
-| `home_team` | string | Home team name or source identifier |
-| `away_team` | string | Away team name or source identifier |
-| `home_goals` | non-negative numeric | Final home-team goals |
-| `away_goals` | non-negative numeric | Final away-team goals |
-| `home_xg` | non-negative numeric or missing | Understat home expected goals |
-| `away_xg` | non-negative numeric or missing | Understat away expected goals |
-| `source` | string | Loader/source label |
+| `date` | datetime | Datum zapasu podla zdrojovych dat |
+| `league` | string | Identifikator sutaze, napr. `EPL` |
+| `season` | string | Identifikator sezony, napr. `2022-23` |
+| `home_team` | string | Nazov alebo identifikator domaceho timu |
+| `away_team` | string | Nazov alebo identifikator hostujuceho timu |
+| `home_goals` | nezaporne cislo | Konecny pocet golov domaceho timu |
+| `away_goals` | nezaporne cislo | Konecny pocet golov hostujuceho timu |
+| `home_xg` | nezaporne cislo alebo prazdne | Expected goals domaceho timu z Understat |
+| `away_xg` | nezaporne cislo alebo prazdne | Expected goals hostujuceho timu z Understat |
+| `source` | string | Oznacenie pouziteho loadera alebo zdroja |
 
-`home_xg` and `away_xg` are intentionally missing for football-data.co.uk
-benchmark rows. They must not be imputed or interpreted as zero.
+`home_xg` a `away_xg` su pri benchmarkovych riadkoch z football-data.co.uk
+umyselne prazdne. Nesmie sa do nich doplnat hodnota ani interpretovat prazdna
+hodnota ako nula.
 
-## Source-specific input formats
+## Format vstupnych suborov podla zdroja
 
 ### Understat
 
-Use a locally downloaded CSV or Parquet file with at least:
+Pouzi lokalne stiahnuty CSV alebo Parquet subor, ktory obsahuje minimalne:
 
 ```text
 date,home_team,away_team,home_goals,away_goals,home_xg,away_xg
 ```
 
-The loader also accepts common aliases such as `h_xg`, `a_xg`, `h_team`,
-`a_team`, `h_goals` and `a_goals`.
+Loader akceptuje aj bezne alternativne nazvy, napriklad `h_xg`, `a_xg`,
+`h_team`, `a_team`, `h_goals` a `a_goals`.
 
 ### football-data.co.uk
 
-Use the downloaded CSV with the standard columns:
+Pouzi stiahnuty CSV subor so standardnymi stlpcami:
 
 ```text
 Date,HomeTeam,AwayTeam,FTHG,FTAG
 ```
 
-Other columns from the source may remain in the input, but they are not
-required by the goals-only benchmark loader. The `Date` field is interpreted
-with day-first parsing because that is the standard format in these files.
+Vstup moze obsahovat aj dalsie zdrojove stlpce, ale goals-only benchmark
+loader ich nepotrebuje. Stlpec `Date` sa interpretuje s poradim den-mesiac-rok,
+pretoze ide o standardny format tychto suborov.
 
-## File naming and metadata
+## Nazvy suborov a metadata
 
-Recommended local names are:
+Odporucane lokalne nazvy suborov su:
 
 ```text
 data/raw/understat_<league>_<season>.csv
 data/raw/football-data_<league>_<season>.csv
 ```
 
-For every downloaded file, record the source URL, download date, league,
-season, source version or page description, and any transformations. The
-repository contains no downloader and does not bypass robots rules,
-rate limits, authentication, or other web protections.
+Pri kazdom stiahnutom subore zaznamenaj zdrojovu URL, datum stiahnutia, ligu,
+sezonu, verziu zdroja alebo popis stranky a vsetky vykonane upravy.
+Repozitar neobsahuje downloader a neobchadza pravidla robots.txt, rychlostne
+limity, autentifikaciu ani inu ochranu webu.
 
-## Scope and limitations
+## Rozsah a obmedzenia
 
-Understat is the xG source for selected top leagues and seasons. Its xG
-definition, historical availability, team naming and terms of use must be
-checked for the exact data used. football-data.co.uk is the goals-only
-benchmark and a control source for match results; it is not an xG source.
+Understat je zdrojom xG pre vybrane top ligy a sezony. Pre konkretne pouzite
+data treba overit definiciu xG, historicku dostupnost, nazvy timov a podmienky
+pouzitia. football-data.co.uk je goals-only benchmark a kontrolny zdroj
+vysledkov zapasov; nejde o zdroj xG.
 
-The recommended initial scope is one or two selected top leagues and a
-small, explicitly documented set of complete seasons available in both
-sources. Comparisons must align dates, team names, league and season before
-calculating metrics. Differences in coverage, revisions, definitions,
-licensing and source quality must be reported rather than silently corrected.
+Odporucany pociatocny rozsah je jedna alebo dve vybrane top ligy a mala,
+jednoznacne zdokumentovana mnozina kompletnych sezon, ktore su dostupne
+v oboch zdrojoch. Pred vypoctom metrik je potrebne zosuladit datum, nazvy
+timov, ligu a sezonu. Rozdiely v pokryti, reviziach, definiciach, licencii
+a kvalite zdrojov treba uviest vo vysledkoch, nie ich potichu opravovat.
