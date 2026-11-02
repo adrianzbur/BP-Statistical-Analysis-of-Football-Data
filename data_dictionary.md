@@ -4,7 +4,7 @@ Projekt pracuje s tabulkami na urovni zapasov. Zdrojove subory sa stahuju
 samostatne a ukladaju lokalne do `data/raw`; velke zdrojove datasety sa
 necommit-uju do Git repozitara.
 
-## Canonicalna schema zapasu
+## Kanonicka schema zapasu
 
 Loadery v `src/football_analysis/sources.py` vracaju tieto stlpce:
 
