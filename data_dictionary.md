@@ -76,3 +76,11 @@ jednoznacne zdokumentovana mnozina kompletnych sezon, ktore su dostupne
 v oboch zdrojoch. Pred vypoctom metrik je potrebne zosuladit datum, nazvy
 timov, ligu a sezonu. Rozdiely v pokryti, reviziach, definiciach, licencii
 a kvalite zdrojov treba uviest vo vysledkoch, nie ich potichu opravovat.
+
+## Premier League pilot
+
+Prvym pilotnym datasetom je Premier League (`EPL`). Vyber jedna spolocna
+kompletna sezona, napr. `2022-23`, musi byt potvrdeny dostupnostou v oboch
+zdrojoch. Validacia vyzaduje zhodu zapasov, timov, datumov a skore. Understat
+nesmie mat chybajuce `home_xg` alebo `away_xg`; benchmark z
+football-data.co.uk xG hodnoty nema.

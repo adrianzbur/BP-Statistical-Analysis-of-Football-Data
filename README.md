@@ -92,10 +92,12 @@ pomocou suborov `.gitkeep`.
    python -m pip install -e ".[dev]"
    ```
 
-2. Stiahnut Understat a football-data.co.uk subory samostatne a vlozit ich do
-   `data/raw`; zdokumentovat ich zdroj a metadata.
+2. Pre Premier League pilot postupovat podla
+   [`data_workflow.md`](data_workflow.md). Pouzit jednu spolocnu kompletne
+   dostupnu sezonu, napr. `2022-23`, a ulozit lokalne subory do `data/raw`.
 3. Pouzit `load_understat_matches` a `load_football_data_matches` z modulu
-   `src/football_analysis/sources.py` na nacitanie lokalnych suborov.
+   `src/football_analysis/sources.py`, potom
+   `validate_common_season` z `src/football_analysis/validation.py`.
 4. Medzivysledky ulozit do `data/interim` alebo `data/processed`.
 5. Experimenty a grafy udrziavat v `notebooks` a `reports/figures`.
 6. Spustit testy:
@@ -126,6 +128,7 @@ upozornenie na obmedzenia, ak to rozsah dat dovoli.
 ```text
 data/                  Vstupne, docasne a spracovane data
 data_dictionary.md     Canonicalna schema a zdrojove mapovanie
+data_workflow.md       Postup pre Premier League pilot
 notebooks/              Experimenty a prieskumna analyza
 reports/figures/        Exportovane grafy a obrazky
 src/football_analysis/  Knihovna pre nacitanie a analyzu
