@@ -1,5 +1,36 @@
 # BP Statistical Analysis of Football Data
 
+## Prvý dokončený experiment
+
+Pilot používa dataset Understat z Kaggle, **Premier League 2014/15–2023/24**,
+3 800 zápasov a 200 tímových sezón. Exponent **2** je pevný pre góly aj xG.
+Samostatne vyhodnocuje celosezónny opisný odhad a predikciu po prvých
+19 zápasoch každého tímu. Cieľom sú body získané zo zápasov, pred bodovými trestami.
+
+| Predikcia po 19 zápasoch | MAE (body) | RMSE (body) |
+| --- | ---: | ---: |
+| Pythagorejský model z gólov | 7.365 | 9.338 |
+| Pythagorejský model z xG | 6.040 | 7.738 |
+| Pokračovanie bodového priemeru | 6.040 | 7.537 |
+
+xG znižuje MAE oproti gólovému modelu približne o 18 %, ale neprekonáva
+referenčný bodový priemer. Toto je opisný záver z uvedeného historického testu.
+
+- [Obsah a kvalita datasetu](reports/understat_dataset.md)
+- [Metóda, výsledky po sezónach a grafy](reports/experiment_01/report.md)
+- [Stav projektu a ďalšie kroky](reports/project_review.md)
+
+Reprodukcia z koreňa projektu:
+
+```text
+python -m pip install -e ".[dev,analysis]"
+python -m football_analysis.pilot data/raw/Understat-data.zip
+python -m pytest
+```
+
+ZIP musí byť dostupný lokálne. Raw dáta sa neposielajú do Gitu.
+Výsledky sú v `reports/experiment_01`, agregované vstupy v `data/processed`.
+
 Projekt bakalarskej prace zamerany na statisticku analyzu futbalovych dat.
 
 ## Ciel projektu
@@ -28,9 +59,9 @@ agregacna uroven dostatocne zdokumentovana.
 
 ## Rozhodnutie o zdrojoch dat
 
-- **Understat** bude zdrojom xG pre vybrane top ligy a sezony.
-- **football-data.co.uk** bude goals-only benchmark a kontrolny zdroj
-  vysledkov zapasov.
+- **Understat cez Kaggle** je zdrojom gólov, xG a výsledkov prvého experimentu.
+- **football-data.co.uk** je voliteľný nezávislý kontrolný zdroj výsledkov;
+  jeho porovnanie zatiaľ nebolo vykonané a nie je podmienkou prvého pilotu.
 
 Oba zdroje sa budu pouzivat iba vo forme uz stiahnutych lokalnych suborov.
 Repozitar neobsahuje scraper, automaticke stahovanie ani mechanizmus na
@@ -92,12 +123,11 @@ pomocou suborov `.gitkeep`.
    python -m pip install -e ".[dev]"
    ```
 
-2. Pre Premier League pilot postupovat podla
-   [`data_workflow.md`](data_workflow.md). Pouzit jednu spolocnu kompletne
-   dostupnu sezonu, napr. `2022-23`, a ulozit lokalne subory do `data/raw`.
-3. Pouzit `load_understat_matches` a `load_football_data_matches` z modulu
-   `src/football_analysis/sources.py`, potom
-   `validate_common_season` z `src/football_analysis/validation.py`.
+2. Pre aktuálny Kaggle pilot postupovať podľa
+   [`data_workflow.md`](data_workflow.md) a spustiť `football_analysis.pilot`.
+3. Na voliteľné porovnanie dvoch zápasových zdrojov slúžia pôvodné loadery
+   v `sources.py` a `validate_common_season` v `validation.py`.
+   Kaggle `game_stats.csv` má vlastný adaptér `understat_dataset.py`.
 4. Medzivysledky ulozit do `data/interim` alebo `data/processed`.
 5. Experimenty a grafy udrziavat v `notebooks` a `reports/figures`.
 6. Spustit testy:
@@ -137,6 +167,7 @@ tests/                  Automatizovane testy
 
 ## Stav
 
-Repozitar obsahuje zaklad projektu a navrh lokalneho datoveho kroku. Konkretne
-ligy, sezony, licencne overenie, volba exponentu a finalny plan statistickeho
-vyhodnotenia budu doplnene po vybere a kontrole dat.
+Obsah dodaného ZIP bol overený, prvý experiment bol vykonaný a výsledky sú
+uložené s metadátami a hashmi vstupov aj kódu. Licencia a číslo verzie Kaggle
+nie sú v archíve a zatiaľ neboli potvrdené. Rozsah dát končí v septembri 2024.
+Notebooky zostávajú prázdne; celý výpočet je reprodukovateľný cez Python CLI.

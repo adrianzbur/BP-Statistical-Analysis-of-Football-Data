@@ -1,5 +1,33 @@
 # Datovy slovnik
 
+## Overený Kaggle export a mapovanie
+
+Aktuálny experiment používa `data/raw/understat/game_stats.csv` z dodaného
+archívu `Understat-data.zip`. Jeden riadok je **tím v zápase**, nie celý zápas.
+Všetkých 23 zápasových aj 19 hráčskych stĺpcov, ich účel a kvalita sú popísané
+v [`reports/understat_dataset.md`](reports/understat_dataset.md).
+
+| Zdrojový stĺpec | Sezónny výstup | Spracovanie |
+| --- | --- | --- |
+| `league`, `season` | `league`, `season` | Zachovať; sezóna je začiatkový rok |
+| `club_name` | `team` | Názov tímu |
+| `id` | — | Klubové ID, nepoužiť ako kľúč zápasu |
+| `date` | `played` | Počet vlastných riadkov tímu |
+| `scored`, `missed` | `goals_for`, `goals_against` | Súčet |
+| `xG`, `xGA` | `xg_for`, `xg_against` | Súčet |
+| `wins`, `draws`, `loses` | `wins`, `draws`, `losses` | Súčet indikátorov |
+| `pts` | `points` | Súčet; kontrola 3W + D |
+
+Adaptér je v `understat_dataset.py`. Predikčný modul `forecast.py` vytvára
+`observed_*` iba z prvých 19 zápasov; `actual_points` je hodnotený konečný
+súčet. `cutoff_date` dokumentuje dátum posledného použitého zápasu.
+Výstupy `predicted_goals`, `predicted_xg`, `predicted_ppg` sú odhady konečných
+bodov; `error_*` znamená odhad mínus skutočnosť.
+
+Body nezahŕňajú administratívne odpočty. Hráčske riadky nie sú zdrojom
+tímových zápasových súčtov. Nasledujúca kanonická schéma je určená pre
+rekonštruované celé zápasy a pre pôvodné všeobecné loadery.
+
 Projekt pracuje s tabulkami na urovni zapasov. Zdrojove subory sa stahuju
 samostatne a ukladaju lokalne do `data/raw`; velke zdrojove datasety sa
 necommit-uju do Git repozitara.

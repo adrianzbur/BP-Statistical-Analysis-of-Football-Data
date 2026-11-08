@@ -1,0 +1,52 @@
+{
+  "source_url": "https://www.kaggle.com/datasets/codytipton/understat-data",
+  "source_attribution": "user-supplied ZIP; Kaggle version/license unconfirmed",
+  "downloaded_at": null,
+  "analysis_utc": "2026-11-08T22:24:54.893778+00:00",
+  "archive_sha256": "06d80091a799ea693a50992770b007d1ef71cdfdb66c4aaa1ce43cf116a6c710",
+  "input_sha256": {
+    "game_stats.csv": "51e8d0579dee5a8c3961681ee6afd23535e69ceb89ce2932113126017bd655b5",
+    "player_stats.csv": "8d8aff7d420a29646fdb042f3b7457152e12805e6b5f1f58b13285814fef7dd8",
+    "understat.db": "0023bf2307fe5d8b4c70a1c9a093a79a4b67c17c86266c60c279aacf82a71be0"
+  },
+  "code_sha256": {
+    "__init__.py": "9eb5e9059cf5650fac956ed488c76b630bbada6ca008813132f558020b2af9ab",
+    "experiment.py": "b52f5d8ecf8e62bc8061f3c7838721dd89ac4902954294837d676e5d5bbe95ea",
+    "forecast.py": "b6b544f5e7c85e3120b713997897af48c6754a02777d37d9f67554f07b92de99",
+    "io.py": "b79bad9e9d9056feaae4eec524c13e9bea6bb754da45a25bee59bf17df58d57b",
+    "metrics.py": "35d53c19886d117c8362e8465d2191dcd62433bb16d7269b1493c8719280bb70",
+    "pilot.py": "bac1324589707a01b6ac4557152309c5f892abd87a705e2c4185691e8246af0c",
+    "preprocessing.py": "6dc9bd5d605eeb698e35e77d064667522b32c166645340b1ac5f0d16006e3b61",
+    "pythagorean.py": "623fecb186dd7dd18122065c55d0dd2ac8d0b5ee4eaa9900869f6546abac740a",
+    "sources.py": "27a28b80e1b12cb50fb6c6ebb51fbefa399da25ca60e2ad9a50641a3a9ad4ce5",
+    "understat_dataset.py": "a151b7e6b2ecb867aa6189d1991d1ff8b27007819c5b7e0b1c0388c1b5db00f7",
+    "validation.py": "949d698805ea29d909ad6cac60fce95ccb2dff4b1a361a7f4d021da4decf6b4c"
+  },
+  "git_revision": "fe3d6f887969fe59075ab82156a2aeefeb2f9f42",
+  "git_dirty": true,
+  "python": "3.14.3",
+  "pandas": "3.0.2",
+  "numpy": "2.4.4",
+  "matplotlib": "3.10.8",
+  "league": "EPL",
+  "seasons": [
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023"
+  ],
+  "exponent": 2.0,
+  "cutoff_matches": 19,
+  "target": "points earned on pitch (3W+D), no administrative deductions",
+  "zero_for_and_against_policy": "raise ValueError",
+  "selection_rule": "20 teams; every ordered home-away pair exactly once; 38 matches per team",
+  "draw_handling": "no draw correction; 3 * Pythagorean share mapping",
+  "forecast_formula": "observed_points + 3 * remaining_matches * observed_share",
+  "baseline_formula": "38 * observed_points / 19"
+}

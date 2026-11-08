@@ -18,6 +18,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+analysis = [
+    "matplotlib>=3.7",
+]
 dev = [
     "pytest>=7.4",
 ]

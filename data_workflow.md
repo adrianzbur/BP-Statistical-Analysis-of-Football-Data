@@ -1,10 +1,33 @@
 # Datovy workflow: Premier League pilot
 
-Tento postup pripravuje jednu spolocnu sezonu Premier League pre porovnanie
-Understatu a football-data.co.uk. V repozitari nie su ziadne raw data ani
-automaticke stahovanie.
+## Aktuálny workflow: Kaggle ZIP
 
-## Odporucana pilotna konfiguracia
+1. Originálny `Understat-data.zip` uložiť do `data/raw`.
+2. Nainštalovať projekt: `python -m pip install -e ".[dev,analysis]"`.
+3. Spustiť `python -m football_analysis.pilot data/raw/Understat-data.zip`.
+4. Prečítať `reports/experiment_01/report.md` a `reports/understat_dataset.md`.
+5. Overiť testy: `python -m pytest`.
+
+Pipeline rozbalí iba tri známe súbory do `data/raw/understat`, skontroluje
+CSV proti SQLite a spáruje domáce/hosťujúce perspektívy zápasov. Existujúci
+rozbalený súbor s odlišným obsahom neprepíše. Žiadny downloader sa nespúšťa.
+
+Pre EPL vyberie úplné dvojkolové ročníky s 20 tímami. Aktuálny archív poskytuje
+2014/15–2023/24; 2024/25 je neúplná a je explicitne vyradená. Z vlastných
+zápasových riadkov každého tímu spočíta GF, GA, xG, xGA a body. Pre predikciu
+využije iba prvých 19 chronologických zápasov tímu. Exponent je vždy 2.
+
+Výstupy sú v `reports/experiment_01`; metadáta zahŕňajú SHA-256 originálov
+aj kódu. `data/processed/understat_EPL_totals.csv` je odvodený vstup pre
+samostatný modul `football_analysis.experiment`. Raw a processed dáta sú
+ignorované Gitom, kompaktné reporty a výsledky možno commitnúť.
+
+## Voliteľný pôvodný workflow: kontrola druhým zdrojom
+
+Nasledujúci postup pripravuje jednu spoločnú sezónu Understatu a
+football-data.co.uk. Tento doplnkový krok zatiaľ nebol vykonaný.
+
+### Konfigurácia kontroly druhým zdrojom
 
 Ako prvy pilot pouzi jednu kompletne dostupnu sezonu, napr. `2022-23`.
 Konkretnu sezonu treba potvrdit podla dostupnosti rovnakeho rozsahu v oboch
