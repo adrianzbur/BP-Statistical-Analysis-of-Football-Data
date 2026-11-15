@@ -1,5 +1,38 @@
 # BP Statistical Analysis of Football Data
 
+## Experiment 02: korekcia remíz
+
+Dokončený experiment 02 zachováva pevný exponent **2** a predikciu po prvých
+**19 zápasoch tímu**. Faktor 3 nahrádza faktorom `3 - d_hist`, kde `d_hist`
+je podiel remíz len z úplných predchádzajúcich sezón EPL. Mení sa iba odhad
+budúcich bodov. Prvá sezóna 2014/15 je kalibračná; hodnotíme **2015/16–2023/24**,
+teda **180 tímových sezón**. Všetky modely sú prepočítané na rovnakej vzorke.
+
+| Model | MAE (body) | RMSE (body) | Bias (body) |
+| --- | ---: | ---: | ---: |
+| Góly – pôvodný | 7.317 | 9.294 | +1.264 |
+| Góly – korekcia remíz | 6.715 | 8.549 | -0.978 |
+| xG – pôvodný | 6.023 | 7.756 | +1.494 |
+| xG – korekcia remíz | **5.454** | **7.113** | -0.768 |
+| Bodový priemer (PPG) | 5.983 | 7.470 | -0.061 |
+
+xG s korekciou znižuje MAE oproti PPG približne o **8,85 %**. Ide o opisný
+výsledok jednej ligy; štatistická významnosť zatiaľ nebola testovaná.
+Cieľom sú body zo zápasov, pred administratívnymi odpočtami.
+
+- [Experiment 02: metodika, sezónne výsledky, kalibrácia a grafy](reports/experiment_02/report.md)
+- [Porovnanie chýb modelov](reports/experiment_02/model_comparison.png)
+- [Chyba po sezónach](reports/experiment_02/mae_by_season.png)
+
+```text
+python -m pip install -e ".[dev,analysis]"
+python -m football_analysis.experiment_02
+python -m pytest
+```
+
+Experiment 03 bude samostatne riešiť optimalizáciu exponentu po ligách,
+5-násobnú validáciu po sezónach a vyhodnotenie poradia tímov.
+
 ## Prvý dokončený experiment
 
 Pilot používa dataset Understat z Kaggle, **Premier League 2014/15–2023/24**,
@@ -120,7 +153,7 @@ pomocou suborov `.gitkeep`.
    ```text
    python -m venv .venv
    .venv\Scripts\activate
-   python -m pip install -e ".[dev]"
+   python -m pip install -e ".[dev,analysis]"
    ```
 
 2. Pre aktuálny Kaggle pilot postupovať podľa

@@ -1,5 +1,34 @@
 # Datovy workflow: Premier League pilot
 
+## Experiment 02: spustenie v existujúcom prostredí
+
+Z koreňa projektu vo Windows PowerShell možno použiť priamo interpreter
+virtuálneho prostredia, aj bez jeho aktivácie:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[dev,analysis]"
+.\.venv\Scripts\python.exe -m football_analysis.experiment_02
+.\.venv\Scripts\python.exe -m pytest
+```
+
+Predvolený vstup je `data/raw/understat/game_stats.csv`. Ak existuje iba ZIP:
+
+```powershell
+.\.venv\Scripts\python.exe -m football_analysis.experiment_02 data/raw/Understat-data.zip
+```
+
+Výstupy sú v `reports/experiment_02`: predikcie, metriky, rozdiely chýb,
+historická kalibrácia, výber sezón, metadáta, report a dva PNG grafy.
+Na grafy je potrebné rozšírenie `analysis` (matplotlib).
+Prvý ročník je iba kalibrácia. Úplné ročníky od nasledujúceho sa vyhodnocujú
+postupne s historickým podielom remíz. V aktuálnych dátach ide o 2015/16–2023/24,
+180 tímových sezón. Rok 2024 je neúplný. `season_selection.csv` rozlišuje roly
+`calibration_only`, `evaluation` a `excluded`.
+
+Pôvodný Experiment 01 zostáva samostatným výstupom. Na porovnanie účinku
+korekcie používať pôvodné modely z `experiment_02/metrics.csv`, ktoré sú
+prepočítané na rovnakých 180 riadkoch. Súhrn Experimentu 01 zahŕňa 200 riadkov.
+
 ## Aktuálny workflow: Kaggle ZIP
 
 1. Originálny `Understat-data.zip` uložiť do `data/raw`.

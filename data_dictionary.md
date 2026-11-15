@@ -1,5 +1,20 @@
 # Datovy slovnik
 
+## Výstupy experimentu 02
+
+`reports/experiment_02/predictions.csv` zachováva predikcie z prvých 19 zápasov
+a pridáva `historical_draw_rate` (podiel remíz z predchádzajúcich sezón),
+`points_per_match_factor` (= 3 mínus tento podiel), `predicted_goals_draw`,
+`predicted_xg_draw` a zodpovedajúce podpísané chyby `error_*_draw`.
+
+`calibration.csv` uvádza počet historických zápasov/remíz, rozsah sezón,
+`training_last_match_date` a `earliest_forecast_date`. Historický posledný
+zápas musí časovo predchádzať všetkým predikciám danej sezóny.
+`comparisons.csv` obsahuje `delta_mae` a `delta_rmse` (kandidát mínus referencia;
+záporné hodnoty sú zlepšenie), ako aj `mae_reduction_percent` (kladné je zlepšenie).
+`season_selection.csv` rozlišuje kompletnosť (`included`) a rolu (`role`);
+kompletná prvá sezóna je zahrnutá do kalibrácie, ale nie do hodnotenej vzorky.
+
 ## Overený Kaggle export a mapovanie
 
 Aktuálny experiment používa `data/raw/understat/game_stats.csv` z dodaného
