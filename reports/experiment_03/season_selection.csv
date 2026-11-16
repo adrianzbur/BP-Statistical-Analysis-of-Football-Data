@@ -1,0 +1,12 @@
+league,season,team_rows,matches,teams,min_played,max_played,included,reason
+EPL,2014,760,380,20,38,38,True,included
+EPL,2015,760,380,20,38,38,True,included
+EPL,2016,760,380,20,38,38,True,included
+EPL,2017,760,380,20,38,38,True,included
+EPL,2018,760,380,20,38,38,True,included
+EPL,2019,760,380,20,38,38,True,included
+EPL,2020,760,380,20,38,38,True,included
+EPL,2021,760,380,20,38,38,True,included
+EPL,2022,760,380,20,38,38,True,included
+EPL,2023,760,380,20,38,38,True,included
+EPL,2024,118,59,20,5,6,False,Incomplete season or wrong expected team count
