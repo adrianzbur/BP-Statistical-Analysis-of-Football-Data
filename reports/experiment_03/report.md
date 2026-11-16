@@ -4,7 +4,7 @@
 
 Predikcia konečných bodov po prvých **19** zápasoch pomocou gólov a xG.
 Päťnásobná validácia je rozdelená **po celých sezónach**: vždy 8 sezón na
-optimalizáciu exponentu a podielu remíz, 2 sezóny na hodnotenie.
+optimalizáciu exponentu a odhad historického podielu remíz, 2 sezóny na hodnotenie.
 Mriežka exponentov: **0.5–3**, spolu 26 kandidátov.
 Exponent sa vyberá výhradne podľa **MAE na tréningových sezónach**.
 Samostatne optimalizujeme štyri varianty: góly/xG × bez korekcie/s korekciou remíz.
