@@ -1,0 +1,67 @@
+league,season,team_rows,matches,teams,min_played,max_played,included,reason,expected_teams,selected_for_cv,cv_policy
+Bundesliga,2014,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2015,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2016,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2017,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2018,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2019,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2020,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2021,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2022,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2023,612,306,18,34,34,True,included,18,True,10 complete seasons; 5 x (8 training + 2 test)
+Bundesliga,2024,90,45,18,5,5,False,Incomplete season or wrong expected team count,18,False,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2014,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2015,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2016,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2017,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2018,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2019,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2020,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2021,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2022,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2023,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+EPL,2024,118,59,20,5,6,False,Incomplete season or wrong expected team count,20,False,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2014,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2015,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2016,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2017,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2018,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2019,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2020,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2021,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2022,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2023,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+La liga,2024,158,79,20,7,8,False,Incomplete season or wrong expected team count,20,False,10 complete seasons; 5 x (8 training + 2 test)
+Ligue 1,2014,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2015,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2016,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2017,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2018,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2019,558,279,20,27,28,False,Incomplete season or wrong expected team count,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2020,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2021,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2022,760,380,20,38,38,True,included,20,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2023,612,306,18,34,34,True,included,18,False,audited only; not comparable with 10-season 5-fold CV
+Ligue 1,2024,108,54,18,6,6,False,Incomplete season or wrong expected team count,18,False,audited only; not comparable with 10-season 5-fold CV
+RFPL,2014,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2015,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2016,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2017,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2018,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2019,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2020,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2021,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2022,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2023,480,240,16,30,30,True,included,16,True,10 complete seasons; 5 x (8 training + 2 test)
+RFPL,2024,160,80,16,10,10,False,Incomplete season or wrong expected team count,16,False,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2014,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2015,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2016,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2017,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2018,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2019,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2020,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2021,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2022,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2023,760,380,20,38,38,True,included,20,True,10 complete seasons; 5 x (8 training + 2 test)
+Serie A,2024,118,59,20,5,6,False,Incomplete season or wrong expected team count,20,False,10 complete seasons; 5 x (8 training + 2 test)
